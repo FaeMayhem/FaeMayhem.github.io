@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marie Alessandro - Content Creator & Digital Producer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #f5f5f5;
+            --secondary: #b8b8b8;
+            --accent-red: #e76f6f;
+            --accent-coral: #ff9575;
+            --accent-teal: #5eb5c1;
+            --accent-purple: #a896d8;
+            --accent-amber: #e8b881;
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --border: #2a2a2a;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--bg);
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Decorative background elements - brighter for dark mode */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(231, 111, 111, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(94, 181, 193, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease-out;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-section {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-red);
+            box-shadow: 0 8px 32px rgba(231, 111, 111, 0.3);
+            flex-shrink: 0;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            color: var(--primary);
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--accent-red);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .contact-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-red);
+            transition: width 0.3s;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent-coral);
+        }
+
+        .contact-links a:hover::after {
+            width: 100%;
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-coral));
+        }
+
+        .work-grid {
+            display: grid;
+            gap: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .work-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--item-color);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .work-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, var(--item-color) 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .work-item:hover::before {
+            opacity: 0.08;
+        }
+
+        .work-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+            border-left-width: 6px;
+            border-color: var(--item-color);
+        }
+
+        .work-item:nth-child(1) {
+            --item-color: var(--accent-coral);
+        }
+
+        .work-item:nth-child(2) {
+            --item-color: var(--accent-teal);
+        }
+
+        .work-item:nth-child(3) {
+            --item-color: var(--accent-purple);
+        }
+
+        .work-item:nth-child(4) {
+            --item-color: var(--accent-red);
+        }
+
+        .work-item:nth-child(5) {
+            --item-color: var(--accent-amber);
+        }
+
+        .work-item h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .work-category {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--item-color);
+            border-radius: 3px;
+        }
+
+        .work-description {
+            color: var(--secondary);
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+        }
+
+        .work-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid var(--item-color);
+            padding-bottom: 2px;
+            transition: all 0.2s;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-link:hover {
+            gap: 0.75rem;
+            color: var(--item-color);
+        }
+
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--secondary);
+            font-size: 0.95rem;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 3rem 1.5rem;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .intro {
+                font-size: 1rem;
+            }
+
+            .work-item {
+                padding: 1.5rem;
+            }
+
+            .contact-links {
+                justify-content: center;
+            }
+        }
+
+        /* Accent line */
+        .accent-line {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-coral));
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="profile.png" alt="Marie Alessandro" class="profile-image">
+            <div class="profile-section">
+                <h1>Marie Alessandro</h1>
+                <p class="subtitle">Content Creator & Digital Producer</p>
+                <div class="accent-line"></div>
+                <p class="intro">
+                    Storyteller specializing in translating complex material into engaging narratives across written, visual, audio, video, and live formats.
+                </p>
+                <div class="contact-links">
+                    <a href="https://www.linkedin.com/in/mariealessandro" target="_blank">LinkedIn</a>
+                    <a href="mailto:mv.alessandro@gmail.com">Email</a>
+                    <a href="tel:5183120196">Phone</a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <h2 class="section-title">Work Samples</h2>
+            <div class="work-grid">
+                <div class="work-item">
+                    <div class="work-category">Video Production</div>
+                    <h3>Video Portfolio</h3>
+                    <p class="work-description">
+                        Collection including study abroad promotional videos, personality profiles, and academic presentations. Demonstrates interview direction, editing, and narrative structure.
+                    </p>
+                    <a href="https://youtube.com/playlist?list=PLAFTbsztvVhcQoe_aXDmQ65T120GQA1dq" target="_blank" class="work-link">Watch Playlist →</a>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-category">Written Content</div>
+                    <h3>Cinema Studies Blog</h3>
+                    <p class="work-description">
+                        Academic blog posts for UMass Boston Cinema Studies program. Film theory and analysis content written for diverse audiences.
+                    </p>
+                    <a href="https://blogs.umb.edu/cinemastudies/author/mariealessandro001/" target="_blank" class="work-link">View Blog Posts →</a>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-category">Multimedia</div>
+                    <h3>Scrolling Photo Essay of Mercy Maelica</h3>
+                    <p class="work-description">
+                        Vertical scrolling webpage sample. Documentary-style multimedia profile combining interview photography and written excerpts with custom HTML presentation.
+                    </p>
+                    <a href="https://faemayhem.github.io/mercy-maelica/" target="_blank" class="work-link">View Project →</a>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-category">Additional Samples</div>
+                    <h3>Further Samples</h3>
+                    <p class="work-description">
+                        Podcast episodes, institutional newsletter samples, technical documentation, and additional written work demonstrating range across formats and audiences.
+                    </p>
+                    <a href="https://drive.google.com/drive/folders/1KqLmlxTmvnnJ4Dwxlv3IbdV7Ur4uBxfh" target="_blank" class="work-link">Access Drive Folder →</a>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-category">Creative Writing</div>
+                    <h3>Creative Storytelling & Ghost Tour Scripts</h3>
+                    <p class="work-description">
+                        Research-driven storytelling scripts for live performances. Historical narratives blending fact and folklore for engaging audience experiences.
+                    </p>
+                    <a href="https://docs.google.com/document/d/1pBzhNn3wvM8zK__I9TFPySLiLgo_zgHlCV5qsRMwVbY/edit" target="_blank" class="work-link">Dr. Trott & the Mermaid Riot →</a><br><br>
+                    <a href="https://docs.google.com/document/d/12tP2FvD5QqCWFO6NSueZwY6KLk4kBHso/edit" target="_blank" class="work-link">The Singing Woman →</a><br><br>
+                    <a href="https://docs.google.com/document/d/1J18v0amAzT8b1UpnVzaAz5qOQ9Ucu6Zno7sWaehq7sc/edit" target="_blank" class="work-link">Boston's Mad Doctors of the Ether Dome →</a><br><br>
+                    <a href="https://docs.google.com/document/d/1D2SbdAocMmUuwVDHtkv0s8unQzsBhYSdgzYy1FAbjdM/edit" target="_blank" class="work-link">Charlotte Cushman →</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2026 Marie Alessandro • Available for content creation and digital production opportunities</p>
+        </footer>
+    </div>
+</body>
+</html>
